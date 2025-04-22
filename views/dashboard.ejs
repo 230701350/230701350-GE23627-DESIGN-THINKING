@@ -8,13 +8,6 @@
                         <h5 class="card-title">CVD Type</h5>
                         <div class="form-group">
                             <select id="cvdTypeSelect" class="form-control">
-                                <!-- <option value="Protanopia" <% if(currentUser.preferences.defaultCVDType==='Protanopia' )
-                                    { %>selected<% } %>>Protanopia (Red-blind)</option>
-                                <option value="Deuteranopia" <%
-                                    if(currentUser.preferences.defaultCVDType==='Deuteranopia' ) { %>selected<% } %>
-                                        >Deuteranopia (Green-blind)</option>
-                                <option value="Tritanopia" <% if(currentUser.preferences.defaultCVDType==='Tritanopia' )
-                                    { %>selected<% } %>>Tritanopia (Blue-blind)</option> -->
                                 <option value="Protanopia" <% if(currentUser.preferences &&
                                     currentUser.preferences.defaultCVDType==='Protanopia' ) { %>selected<% } %>
                                         >Protanopia (Red-blind)</option>

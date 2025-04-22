@@ -1,13 +1,3 @@
-// // DOM Elements
-// document.addEventListener('DOMContentLoaded', () => {
-//     // Initialize the history page
-//     initHistoryPage();
-// });
-
-// // Run batch operations setup
-// document.addEventListener('DOMContentLoaded', () => {
-//     setupBatchOperations();
-// });
 
 
 // public/js/history-client.js
@@ -69,38 +59,7 @@ async function initHistoryPage() {
     }
 }
 
-// // Function to create an image card HTML
-// function createImageCard(image) {
-//     const processedDate = new Date(image.processedDate).toLocaleDateString();
 
-//     return `
-//         <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-//             <div class="card h-100" data-image-id="${image._id}">
-//                 <div class="card-img-top">
-//                     <img src="${image.processedImageUrl}" alt="Processed Image">
-//                 </div>
-//                 <div class="card-body">
-//                     <h5 class="card-title">
-//                         ${image.metadata.title || 'Processed Image'}
-//                     </h5>
-//                     <p class="card-text">
-//                         <small class="text-muted">
-//                             Type: ${image.cvdType}<br>
-//                             Date: ${processedDate}
-//                         </small>
-//                     </p>
-//                 </div>
-//                 <div class="card-footer d-flex justify-content-between align-items-center">
-//                     <button class="btn btn-sm btn-primary view-image-btn">View</button>
-//                     <div class="form-check">
-//                         <input class="form-check-input select-image-check" type="checkbox" value="${image._id}">
-//                         <label class="form-check-label">Select</label>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     `;
-// }
 
 
 function createImageCard(image) {
@@ -168,46 +127,6 @@ function setupImageCardListeners() {
         });
     });
 }
-
-// // Function to show image detail
-// async function showImageDetail(imageId) {
-//     try {
-//         const response = await fetch(`/history/api/images/${imageId}`);
-//         const data = await response.json();
-
-//         if (data.success) {
-//             const image = data.image;
-
-//             // Populate modal with image details
-//             document.getElementById('detailModalTitle').textContent =
-//                 image.metadata.title || 'Processed Image';
-
-//             document.getElementById('originalImage').src = image.originalImageUrl;
-//             document.getElementById('processedImage').src = image.processedImageUrl;
-
-//             document.getElementById('imageDetailType').textContent = image.cvdType;
-//             document.getElementById('imageDetailDate').textContent =
-//                 new Date(image.processedDate).toLocaleString();
-
-//             // Set up download links
-//             document.getElementById('downloadOriginal').href = image.originalImageUrl;
-//             document.getElementById('downloadProcessed').href = image.processedImageUrl;
-
-//             // Set delete button data
-//             document.getElementById('deleteImageBtn').dataset.imageId = image._id;
-
-//             // Show modal
-//             const imageModal = new bootstrap.Modal(document.getElementById('imageDetailModal'));
-//             imageModal.show();
-//         } else {
-//             alert('Failed to load image details');
-//         }
-//     } catch (error) {
-//         console.error('Error loading image details:', error);
-//         alert('Failed to load image details');
-//     }
-// }
-
 
 function showImageDetail(imageId) {
     try {

@@ -109,7 +109,7 @@ app.use(express.urlencoded({ limit: '5000mb', extended: true }));
 
 
 
-app.use('/history', historyRoutes); // ✅ this is correct
+app.use('/history', historyRoutes);
 
 
 

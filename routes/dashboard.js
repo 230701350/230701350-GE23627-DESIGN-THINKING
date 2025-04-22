@@ -21,20 +21,7 @@ let selectedPixelCoords = null;
 const express = require('express');
 const router = express.Router();
 
-// router.get('/', (req, res) => {
 
-//     const currentUser = req.user || {}; // fallback to empty object
-
-//     if (!currentUser.preferences) {
-//         currentUser.preferences = {
-//             defaultCVDType: 'Protanopia' // or any sensible default
-//         };
-//     }
-
-//     res.render('dashboard', {
-//         currentUser: req.user
-//     });
-// });
 
 router.get('/', (req, res) => {
     const fallbackUser = {
@@ -126,19 +113,7 @@ function initEventListeners() {
     resetBtn.addEventListener('click', resetImage);
     addToHistoryBtn.addEventListener('click', saveToHistory)
 
-    // processBtn.addEventListener('click', () => {
-    //     // Your existing processing code...
 
-    //     // After processing is complete and correctedImage is set:
-    //     addToHistoryBtn.disabled = false; // Enable the add to history button
-    // });
-
-    // resetBtn.addEventListener('click', () => {
-    //     // Your existing reset code...
-
-    //     // When the image is reset:
-    //     addToHistoryBtn.disabled = true; // Disable the add to history button
-    // });
 
     // Webcam controls
     startWebcamBtn.addEventListener('click', startWebcam);
@@ -1352,14 +1327,7 @@ router.post('/process-image', isLoggedIn, async (req, res) => {
 });
 
 const imageController = require('../controllers/imageController');
-// // Middleware to check if user is logged in
-// function isLoggedIn(req, res, next) {
-//     if (!req.isAuthenticated()) {
-//         req.flash('error', 'You must be signed in');
-//         return res.redirect('/login');
-//     }
-//     next();
-// }
+
 
 // Show dashboard
 router.get('/', isLoggedIn, (req, res) => {
