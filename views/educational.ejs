@@ -1,0 +1,410 @@
+<!-- views/educational.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header') %>
+
+    <body>
+        <%- include('./partials/navbar') %>
+
+            <div class="container edu-container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="mb-4">Understanding Color Vision Deficiency</h1>
+                        <p class="lead mb-5">Learn about different types of color vision deficiency, their causes, and
+                            how ChromaVision helps enhance color perception.</p>
+                    </div>
+                </div>
+
+                <!-- Introduction Section -->
+                <div class="edu-section">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2>What is Color Vision Deficiency?</h2>
+                            <p>Color Vision Deficiency (CVD), commonly referred to as color blindness, affects
+                                approximately 1 in 12 men and 1 in 200 women worldwide. It's a condition where
+                                individuals have difficulty distinguishing certain colors or perceiving color
+                                differences.</p>
+                            <p>Most cases of CVD are genetic and present from birth, but some can be acquired through
+                                eye diseases, certain medications, or aging. CVD occurs when one or more of the three
+                                types of cone cells in the retina (responsible for color perception) are absent or
+                                function abnormally.</p>
+                            <p>While "color blindness" is a common term, true color blindness (seeing only in shades of
+                                gray) is extremely rare. Most people with CVD can see colors but have difficulty
+                                differentiating between particular color pairs.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h4 class="card-title">Key Facts About CVD</h4>
+                                    <ul class="mt-3">
+                                        <li>Affects approximately 8% of men and 0.5% of women worldwide</li>
+                                        <li>Most commonly inherited on the X chromosome (explaining higher prevalence in
+                                            males)</li>
+                                        <li>Cannot be "cured" but can be managed with assistive technologies</li>
+                                        <li>Severity varies widely between individuals</li>
+                                        <li>Red-green color deficiency is the most common form</li>
+                                        <li>May impact career choices in fields requiring precise color discrimination
+                                        </li>
+                                        <li>Often undiagnosed in children until they face difficulties with color-coded
+                                            materials</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Types of CVD Section -->
+                <div class="edu-section">
+                    <h2 class="mb-4">Types of Color Vision Deficiency</h2>
+                    <div class="row">
+                        <div class="col-lg-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h3 class="card-title mb-0">Protanopia</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p>Protanopia is caused by the absence or dysfunction of red-sensitive photoreceptor
+                                        (L-cone) cells in the retina.</p>
+                                    <h5>Characteristics:</h5>
+                                    <ul>
+                                        <li>Difficulty distinguishing between red and green colors</li>
+                                        <li>Reds appear darker than normal and may look black</li>
+                                        <li>Greens appear more beige/yellow</li>
+                                        <li>Reduced overall brightness of red, orange, and yellow</li>
+                                    </ul>
+                                    <div class="mt-3">
+                                        <h5>Normal Vision vs. Protanopia</h5>
+                                        <div class="cvd-comparison">
+                                            <div class="image-container">
+
+                                                <img src="/images/ntop.png" alt="Normal color spectrum"
+                                                    class="img-fluid">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-success text-white">
+                                    <h3 class="card-title mb-0">Deuteranopia</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p>Deuteranopia occurs when green-sensitive photoreceptor (M-cone) cells are absent
+                                        or dysfunctional.</p>
+                                    <h5>Characteristics:</h5>
+                                    <ul>
+                                        <li>Difficulty distinguishing between red and green colors</li>
+                                        <li>Greens appear more reddish</li>
+                                        <li>Reds may appear as brownish-yellow</li>
+                                        <li>Normal brightness perception (unlike protanopia)</li>
+                                    </ul>
+                                    <div class="mt-3">
+                                        <h5>Normal Vision vs. Deuteranopia</h5>
+                                        <div class="cvd-comparison">
+                                            <div class="image-container">
+
+                                                <img src="/images/ntod.png" alt="Normal color spectrum"
+                                                    class="img-fluid">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-info text-white">
+                                    <h3 class="card-title mb-0">Tritanopia</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p>Tritanopia is a rare condition resulting from absent or dysfunctional
+                                        blue-sensitive photoreceptor (S-cone) cells.</p>
+                                    <h5>Characteristics:</h5>
+                                    <ul>
+                                        <li>Difficulty distinguishing between blue and yellow colors</li>
+                                        <li>Blues appear greenish</li>
+                                        <li>Yellows appear reddish or pink</li>
+                                        <li>Can be acquired through aging or certain medications</li>
+                                    </ul>
+                                    <div class="mt-3">
+                                        <h5>Normal Vision vs. Tritanopia</h5>
+                                        <div class="cvd-comparison">
+                                            <div class="image-container">
+
+                                                <img src="/images/ntot.png" alt="Normal color spectrum"
+                                                    class="img-fluid">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How ChromaVision Works Section -->
+                <div class="edu-section">
+                    <h2 class="mb-4">How ChromaVision Works</h2>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <p>ChromaVision uses advanced color transformation algorithms to enhance and correct images
+                                for people with color vision deficiency. The application processes images through the
+                                following steps:</p>
+
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5>1. Color Space Transformation</h5>
+                                    <p>Images are first converted from standard RGB color space to LMS color space,
+                                        which represents colors based on the response of the three types of cone cells
+                                        in the human eye (Long, Medium, and Short wavelengths).</p>
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5>2. Deficiency Simulation</h5>
+                                    <p>For educational purposes, ChromaVision can simulate how images appear to
+                                        individuals with different types of CVD by applying scientifically validated
+                                        transformation matrices that map normal vision to CVD vision.</p>
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5>3. Daltonization Process</h5>
+                                    <p>The core correction mechanism, known as "daltonization," redistributes colors
+                                        that are indistinguishable to people with CVD to colors they can perceive. This
+                                        process:</p>
+                                    <ul>
+                                        <li>Identifies problematic color combinations</li>
+                                        <li>Shifts these colors to enhance contrast and distinguishability</li>
+                                        <li>Preserves overall image appearance while making key details visible</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>4. Personalized Calibration</h5>
+                                    <p>ChromaVision allows users to adjust correction intensity to match their specific
+                                        needs, as CVD varies in severity between individuals. The application saves
+                                        these preferences for future use.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Color Transformation Matrix</h4>
+                                    <p>Below is an example of the transformation matrix used for Deuteranopia
+                                        correction:</p>
+                                    <pre class="bg-light p-3 rounded">
+// LMS to RGB Transformation
+[L]   [17.8824  43.5161  4.11935] [R]
+[M] = [3.45565  27.1554  3.86714] [G]
+[S]   [0.0299566 0.184309 1.46709] [B]
+
+// Deuteranopia Simulation
+[L]   [1      0      0    ] [L]
+[M'] = [0.494207 0  1.24827] [M]
+[S']   [0      0      1    ] [S]
+
+// Correction Application
+[R']   [0.0809444479  -0.130504409  0.116721066] [L]
+[G'] = [-0.0102485335 0.0540193266  -0.113614708] [M']
+[B']   [-0.000365296938 -0.00412161469 0.693511405] [S']
+                            </pre>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Everyday Challenges Section -->
+                <div class="edu-section">
+                    <h2 class="mb-4">Everyday Challenges & Solutions</h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-primary text-white">
+                                    <h4 class="mb-0">Challenges</h4>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <h5>Traffic Signals</h5>
+                                            <p>Difficulty distinguishing between red and green lights</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Food Ripeness</h5>
+                                            <p>Challenges determining if fruit is ripe or vegetables are fresh</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Clothing Coordination</h5>
+                                            <p>Matching clothes with complementary colors</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Digital Interfaces</h5>
+                                            <p>Reading color-coded information in apps, websites, and charts</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Educational Materials</h5>
+                                            <p>Using color-coded learning resources and maps</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-success text-white">
+                                    <h4 class="mb-0">Practical Solutions</h4>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <h5>Position-Based Recognition</h5>
+                                            <p>Learning traffic light positions (top=red, bottom=green) rather than
+                                                relying on color</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Texture & Shape Cues</h5>
+                                            <p>Using additional sensory information when color isn't reliable</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Label Organization</h5>
+                                            <p>Organizing clothes with labels or by preset combinations</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>CVD-Friendly Settings</h5>
+                                            <p>Using built-in accessibility features in operating systems</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Alternative Indicators</h5>
+                                            <p>Looking for patterns, symbols, and text labels instead of color coding
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-info text-white">
+                                    <h4 class="mb-0">How ChromaVision Helps</h4>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <h5>Real-time Color Enhancement</h5>
+                                            <p>Process live camera feed to enhance color distinction in everyday
+                                                situations</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Food Selection Aid</h5>
+                                            <p>Identify ripeness of fruits and vegetables through enhanced color
+                                                differences</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Clothing Assistant</h5>
+                                            <p>Check clothing color combinations before purchasing or wearing</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Digital Content Correction</h5>
+                                            <p>Process screenshots of websites, charts, and presentations for better
+                                                color distinction</p>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>Educational Support</h5>
+                                            <p>Enhance color-coded learning materials, maps, and diagrams</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="edu-section">
+                    <h2 class="mb-4">Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <h4>Can color vision deficiency be cured?</h4>
+                        <p>Currently, there is no cure for inherited color vision deficiency. However, if the condition
+                            is caused by certain medications or eye diseases, treating the underlying cause may improve
+                            color vision. For inherited CVD, assistive technologies like ChromaVision and specialized
+                            glasses can help enhance color perception, but they do not cure the condition.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>How is color vision deficiency diagnosed?</h4>
+                        <p>The most common diagnostic tool is the Ishihara Color Test, which consists of a series of
+                            colored plates with numbers or patterns visible to those with normal color vision but
+                            difficult or impossible to see for those with CVD. Other tests include the
+                            Farnsworth-Munsell 100 Hue Test, which measures color discrimination more precisely, and the
+                            anomaloscope, which can determine the exact type and severity of red-green color deficiency.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can women have color vision deficiency?</h4>
+                        <p>Yes, though it's less common. Color vision deficiency is primarily inherited as an X-linked
+                            recessive trait. Since women have two X chromosomes, they need to inherit the gene from both
+                            parents to express the condition, which is why it affects only about 0.5% of women compared
+                            to 8% of men. Women can also be carriers, meaning they have one normal X chromosome and one
+                            with the CVD gene, allowing them to pass the condition to their sons.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>How does ChromaVision differ from color-correcting glasses?</h4>
+                        <p>Color-correcting glasses use specific lens filters to alter the wavelengths of light entering
+                            the eye, enhancing color contrast for people with CVD. ChromaVision, on the other hand, uses
+                            digital image processing algorithms to modify colors in images and video feeds. The key
+                            differences are:</p>
+                        <ul>
+                            <li>ChromaVision is customizable for different types and severities of CVD</li>
+                            <li>Digital correction can be applied selectively to specific images or scenes</li>
+                            <li>ChromaVision can provide educational simulations and detailed color information</li>
+                            <li>The software approach doesn't require wearing any special eyewear</li>
+                        </ul>
+                        <p>Both solutions have their advantages, and some people may benefit from using both in
+                            different situations.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Are there careers that people with CVD should avoid?</h4>
+                        <p>Some careers do have color vision requirements due to safety concerns or job requirements.
+                            These may include:</p>
+                        <ul>
+                            <li>Commercial airline pilots (strict color vision requirements)</li>
+                            <li>Electrical work (color-coded wires)</li>
+                            <li>Military service (varies by branch and role)</li>
+                            <li>Certain types of design work (graphic design, fashion)</li>
+                            <li>Quality control in color-critical industries</li>
+                        </ul>
+                        <p>However, with technological aids like ChromaVision and increasing accommodations in the
+                            workplace, many of these fields are becoming more accessible. Each case should be evaluated
+                            individually based on the specific type and severity of CVD and the exact job requirements.
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <%- include('./partials/footer') %>
+                    <script src="https://d3js.org/d3.v7.min.js"></script>
+                    <script src="/js/educational.js"></script>
+    </body>
+
+</html>

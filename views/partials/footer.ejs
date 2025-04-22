@@ -1,0 +1,34 @@
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>ChromaVision</h5>
+                <p>Making the world more accessible for people with color vision deficiency.</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/educational">Learn About CVD</a></li>
+                    <% if (typeof currentUser !=='undefined' && currentUser) { %>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/history">My History</a></li>
+                        <% } else { %>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Register</a></li>
+                            <% } %>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Contact</h5>
+                <ul class="list-unstyled">
+                    <li><a href="mailto:support@chromavision.com">support@chromavision.com</a></li>
+                    <li>© 2025 ChromaVision</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<%- include('./partials/header') %>
+    <%- include('./partials/navbar') %>
+
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <% if (currentUser) { %>
+                                <h3 class="card-title">
+                                    <%= currentUser.username %>
+                                </h3>
+                                <% if (currentUser.name) { %>
+                                    <h5>
+                                        <%= currentUser.name %>
+                                    </h5>
+                                    <% } %>
+                                        <p class="text-muted">
+                                            <%= currentUser.email || '' %>
+                                        </p>
+                                        <div class="profile-image mb-3">
+                                            <% if (currentUser.profileImage) { %>
+                                                <img src="<%= currentUser.profileImage %>" alt="Profile Picture"
+                                                    class="img-fluid rounded-circle" style="max-width: 150px;">
+                                                <% } else { %>
+                                                    <img src="/images/default-profile.png" alt="Profile Picture"
+                                                        class="img-fluid rounded-circle" style="max-width: 150px;">
+                                                    <% } %>
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm" id="changeProfilePicBtn">Change
+                                            Profile Picture</button>
+                                        <% } else { %>
+                                            <p>Please log in to view your profile.</p>
+                                            <% } %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <% if (currentUser) { %>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Profile Settings</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="personal-tab" data-toggle="tab" href="#personal"
+                                            role="tab">Personal Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="preferences-tab" data-toggle="tab" href="#preferences"
+                                            role="tab">CVD Preferences</a>
+                                    </li>
+
+
+                                </ul>
+
+                                <div class="tab-content mt-3" id="profileTabContent">
+                                    <!-- Personal Information Tab -->
+                                    <div class="tab-pane fade show active" id="personal" role="tabpanel">
+                                        <!-- Make sure the form action matches your route -->
+                                        <form action="/profile/update" method="POST" id="profileForm">
+                                            <div class="form-group">
+                                                <label for="username">Username</label>
+                                                <input type="text" class="form-control" id="username" name="username"
+                                                    value="<%= currentUser.username %>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name">Full Name</label>
+                                                <input type="text" class="form-control" id="name" name="name"
+                                                    value="<%= currentUser.name || '' %>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control" id="email" name="email"
+                                                    value="<%= currentUser.email || '' %>">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        </form>
+                                    </div>
+
+                                    <!-- Remainder of the file stays the same -->
+                                    <!-- CVD Preferences Tab -->
+                                    <div class="tab-pane fade" id="preferences" role="tabpanel">
+                                        <form action="/profile/update-preferences" method="POST">
+                                            <div class="form-group">
+                                                <label for="defaultCVDType">Default Color Vision Deficiency Type</label>
+                                                <select class="form-control" id="defaultCVDType" name="defaultCVDType">
+                                                    <option value="Protanopia" <%=(currentUser.preferences &&
+                                                        currentUser.preferences.defaultCVDType==='Protanopia' )
+                                                        ? 'selected' : '' %>>Protanopia</option>
+                                                    <option value="Deuteranopia" <%=(!currentUser.preferences ||
+                                                        currentUser.preferences.defaultCVDType==='Deuteranopia' )
+                                                        ? 'selected' : '' %>>Deuteranopia</option>
+                                                    <option value="Tritanopia" <%=(currentUser.preferences &&
+                                                        currentUser.preferences.defaultCVDType==='Tritanopia' )
+                                                        ? 'selected' : '' %>>Tritanopia</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" id="showSideBySide"
+                                                    name="showSideBySide" <%=(currentUser.preferences &&
+                                                    currentUser.preferences.showSideBySide) ? 'checked' : '' %>>
+                                                <label class="form-check-label" for="showSideBySide">
+                                                    Show original and corrected images side by side
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Picture Upload Modal -->
+        <div class="modal fade" id="profilePictureModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Upload Profile Picture</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/profile/upload-image" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="profileImage">Select Image</label>
+                                <input type="file" class="form-control-file" id="profileImage" name="profileImage"
+                                    accept="image/*" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Account Modal -->
+        <div class="modal fade" id="deleteAccountModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger">Delete Account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete your account? This action cannot be undone and all your data
+                            will be permanently lost.</p>
+                        <form action="/profile/delete-account" method="POST">
+                            <div class="form-group">
+                                <label for="confirmDelete">Type your password to confirm:</label>
+                                <input type="password" class="form-control" id="confirmDelete" name="confirmDelete"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-danger">Delete My Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Handle profile picture change button
+                document.getElementById('changeProfilePicBtn').addEventListener('click', function () {
+                    $('#profilePictureModal').modal('show');
+                });
+
+                // Bootstrap Tab functionality
+                $('#profileTabs a').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                });
+
+                // Debug form submission
+                document.getElementById('profileForm').addEventListener('submit', function (e) {
+                    console.log('Form submitted');
+                    // You can remove this debugging if not needed
+                });
+            });
+        </script>
+
+        <%- include('./partials/footer') %>

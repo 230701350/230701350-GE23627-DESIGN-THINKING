@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+    <div class="auth-container">
+        <div class="auth-form">
+            <h1>Login to ChromaVision</h1>
+
+            <% if(error && error.length> 0) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+                <% } %>
+
+                    <% if(success && success.length> 0) { %>
+                        <div class="alert alert-success" role="alert">
+                            <%= success %>
+                        </div>
+                        <% } %>
+
+                            <form action="/login" method="POST">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" name="username" class="form-control" required
+                                        autofocus>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </form>
+
+                            <div class="auth-links">
+                                <a href="/forgot">Forgot Password?</a>
+                                <span class="separator">|</span>
+                                <a href="/register">Create Account</a>
+                            </div>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>

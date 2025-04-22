@@ -1,0 +1,247 @@
+<%- include('partials/header') %>
+    <%- include('partials/navbar') %>
+        <script src="/js/dashboard-client.js"></script>
+        <div class="dashboard-container">
+            <div class="sidebar">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CVD Type</h5>
+                        <div class="form-group">
+                            <select id="cvdTypeSelect" class="form-control">
+                                <!-- <option value="Protanopia" <% if(currentUser.preferences.defaultCVDType==='Protanopia' )
+                                    { %>selected<% } %>>Protanopia (Red-blind)</option>
+                                <option value="Deuteranopia" <%
+                                    if(currentUser.preferences.defaultCVDType==='Deuteranopia' ) { %>selected<% } %>
+                                        >Deuteranopia (Green-blind)</option>
+                                <option value="Tritanopia" <% if(currentUser.preferences.defaultCVDType==='Tritanopia' )
+                                    { %>selected<% } %>>Tritanopia (Blue-blind)</option> -->
+                                <option value="Protanopia" <% if(currentUser.preferences &&
+                                    currentUser.preferences.defaultCVDType==='Protanopia' ) { %>selected<% } %>
+                                        >Protanopia (Red-blind)</option>
+                                <option value="Deuteranopia" <% if(currentUser.preferences &&
+                                    currentUser.preferences.defaultCVDType==='Deuteranopia' ) { %>selected<% } %>
+                                        >Deuteranopia (Green-blind)</option>
+                                <option value="Tritanopia" <% if(currentUser.preferences &&
+                                    currentUser.preferences.defaultCVDType==='Tritanopia' ) { %>selected<% } %>
+                                        >Tritanopia (Blue-blind)</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Mode</h5>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-primary active">
+                                <input type="radio" name="options" id="correction" checked> Correction
+                            </label>
+                            <label class="btn btn-outline-primary">
+                                <input type="radio" name="options" id="simulation"> Simulation
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Input Method</h5>
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imageUpload" accept="image/*">
+                                <label class="custom-file-label" for="imageUpload">Choose image...</label>
+                            </div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span>- OR -</span>
+                        </div>
+                        <div class="text-center mt-2">
+                            <button id="webcamButton" class="btn btn-secondary">Use Webcam</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Pixel Analysis</h5>
+                        <div id="pixelInfo" class="text-center">
+                            <p>Click on image to analyze pixel</p>
+                            <div class="color-display-container">
+                                <div class="color-item">
+                                    <div class="color-label">Original:</div>
+                                    <div class="color-info">
+                                        <div id="originalColorSample" class="color-sample"></div>
+                                        <div class="color-text">
+                                            <div id="originalColorValue">-</div>
+                                            <div id="originalColorName" class="color-name">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-label">Corrected:</div>
+                                    <div class="color-info">
+                                        <div id="correctedColorSample" class="color-sample"></div>
+                                        <div class="color-text">
+                                            <div id="correctedColorValue">-</div>
+                                            <div id="correctedColorName" class="color-name">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <% if(success && success.length> 0) { %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                    <% } %>
+
+                        <div class="image-container">
+                            <div class="image-box">
+                                <h4 class="image-title">Original Image</h4>
+                                <div id="originalImageContainer" class="image-frame">
+                                    <img id="originalImage" src="/images/placeholder-image.jpg"
+                                        alt="Upload an image or use webcam">
+                                </div>
+                            </div>
+
+                            <div class="image-box">
+                                <h4 class="image-title">Processed Image</h4>
+                                <div id="processedImageContainer" class="image-frame">
+                                    <img id="processedImage" src="/images/placeholder-image.jpg"
+                                        alt="Processed image will appear here">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button id="addToHistoryBtn" class="btn btn-success"><i class="bi bi-journal-plus"></i> Add
+                                to History</button>
+                            <button id="shareButton" class="btn btn-outline-primary">Share</button>
+                            <button id="downloadButton" class="btn btn-outline-secondary">Download</button>
+
+                        </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="webcamModal" tabindex="-1" role="dialog" aria-labelledby="webcamModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="webcamModalLabel">Capture Image from Webcam</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="webcam-container">
+                            <video id="webcam" autoplay playsinline></video>
+                            <canvas id="webcamCanvas" style="display: none;"></canvas>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="captureButton" class="btn btn-primary">Capture</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/js/imageProcessor.js"></script>
+        <script src="/js/webcam.js"></script>
+        <script src="/js/colorAnalysis.js"></script>
+        <script>
+            // Modified version for dashboard-client.js
+            document.addEventListener('DOMContentLoaded', function () {
+                const addToHistoryBtn = document.getElementById('addToHistoryBtn');
+
+                if (addToHistoryBtn) {
+                    addToHistoryBtn.addEventListener('click', async function () {
+                        try {
+                            // Check if we have processed images
+                            const originalImage = document.getElementById('originalImage');
+                            const processedImage = document.getElementById('processedImage');
+
+                            if (originalImage.src.includes('placeholder-image.jpg') ||
+                                processedImage.src.includes('placeholder-image.jpg')) {
+                                alert('Please process an image before adding to history.');
+                                return;
+                            }
+
+                            // Show loading state
+                            addToHistoryBtn.disabled = true;
+                            addToHistoryBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...';
+
+                            // Get the CVD type
+                            const cvdTypeSelect = document.getElementById('cvdTypeSelect');
+                            const cvdType = cvdTypeSelect.value;
+
+                            // Create FormData to send the images
+                            const formData = new FormData();
+
+                            // Handle images that could be data URLs or regular URLs
+                            let originalBlob, processedBlob;
+
+                            if (originalImage.src.startsWith('data:')) {
+                                // It's a data URL
+                                const response = await fetch(originalImage.src);
+                                originalBlob = await response.blob();
+                            } else {
+                                // It's a URL to an image
+                                const response = await fetch(originalImage.src);
+                                originalBlob = await response.blob();
+                            }
+
+                            if (processedImage.src.startsWith('data:')) {
+                                // It's a data URL
+                                const response = await fetch(processedImage.src);
+                                processedBlob = await response.blob();
+                            } else {
+                                // It's a URL to an image
+                                const response = await fetch(processedImage.src);
+                                processedBlob = await response.blob();
+                            }
+
+                            formData.append('originalImage', originalBlob, 'original.jpg');
+                            formData.append('processedImage', processedBlob, 'processed.jpg');
+                            formData.append('cvdType', cvdType);
+
+                            // Add metadata if available
+                            const metadata = {
+                                mode: document.querySelector('input[name="options"]:checked').id
+                            };
+                            formData.append('metadata', JSON.stringify(metadata));
+
+                            // Send to server
+                            const response = await fetch('/history/save', {
+                                method: 'POST',
+                                body: formData
+                            });
+
+                            const result = await response.json();
+
+                            if (result.success) {
+                                alert('Image successfully added to history!');
+                            } else {
+                                alert('Failed to add image to history: ' + result.message);
+                            }
+                        } catch (error) {
+                            console.error('Error adding image to history:', error);
+                        } finally {
+                            // Reset button state
+                            addToHistoryBtn.disabled = false;
+                            addToHistoryBtn.innerHTML = '<i class="bi bi-journal-plus"></i> Add to History';
+                        }
+                    });
+                }
+            });
+        </script>
+
+        <%- include('partials/footer') %>
